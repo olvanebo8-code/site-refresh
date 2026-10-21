@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#faf8f3" />
+  <meta name="description" content="Entdecken Sie die uigurische Küche im Ana Yurt in Duisburg: frisch gezogene Nudeln, aromatische Gewürze und herzliche Gastfreundschaft." />
+  <title>Ana Yurt — Uigurische Küche in Duisburg</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --cream:#faf8f3; --ink:#242720; --gold:#bd762d; --muted:#74756e; }
+    * { box-sizing:border-box; }
+    body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); }
+    h1,h2,h3,.serif { font-family:'Playfair Display',serif; }
+    .nav-glass { background:rgba(250,248,243,.88); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+    .hero { background-image:linear-gradient(90deg,rgba(22,23,19,.78) 0%,rgba(22,23,19,.56) 48%,rgba(22,23,19,.12) 100%),url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=2200&q=90'); background-size:cover; background-position:center 54%; }
+    .eyebrow { letter-spacing:.22em; text-transform:uppercase; font-size:.68rem; font-weight:700; color:var(--gold); }
+    .menu-tab { transition:all .2s ease; white-space:nowrap; }
+    .menu-tab[aria-selected="true"] { color:#fff; background:#292b24; border-color:#292b24; }
+    .dish-card { animation:rise .35s ease both; }
+    @keyframes rise { from {opacity:0;transform:translateY(8px)} to {opacity:1;transform:translateY(0)} }
+    .gallery-img { transition:transform .65s cubic-bezier(.2,.7,.2,1); }
+    .gallery-card:hover .gallery-img { transform:scale(1.055); }
+    .toast { opacity:0; transform:translateY(12px); pointer-events:none; transition:all .25s ease; }
+    .toast.show { opacity:1; transform:translateY(0); }
+    input,select,textarea { color:#292b24; }
+    input:focus,select:focus,textarea:focus { outline:2px solid rgba(189,118,45,.35); border-color:#bd762d!important; }
+    @media(max-width:767px) { .hero { background-position:60% center; } }
+  </style>
+</head>
+<body>
+  <!-- Sticky navigation -->
+  <header id="top" class="fixed inset-x-0 top-0 z-50 border-b border-black/5 nav-glass">
+    <nav class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 lg:px-10" aria-label="Hauptnavigation">
+      <a href="#home" class="flex items-center gap-3" aria-label="Ana Yurt – Startseite">
+        <span class="grid h-12 w-12 place-items-center rounded-full border border-[#bd762d]/40 text-[#a56525] serif text-2xl">A</span>
+        <span><span class="block serif text-[20px] leading-tight">Ana Yurt</span><span class="block text-[9px] uppercase tracking-[.19em] text-stone-500">Uigurische Küche · Duisburg</span></span>
+      </a>
+      <div class="hidden items-center gap-8 lg:flex">
+        <a class="text-sm text-stone-700 hover:text-[#a56525]" href="#home">Start</a><a class="text-sm text-stone-700 hover:text-[#a56525]" href="#story">Unsere Küche</a><a class="text-sm text-stone-700 hover:text-[#a56525]" href="#menu">Speisekarte</a><a class="text-sm text-stone-700 hover:text-[#a56525]" href="#gallery">Einblicke</a><a class="text-sm text-stone-700 hover:text-[#a56525]" href="#contact">Kontakt</a>
+      </div>
+      <a href="tel:+4915775078320" class="hidden items-center gap-3 rounded-full bg-[#b8732e] px-5 py-2.5 text-white transition hover:-translate-y-0.5 hover:bg-[#9e6024] sm:inline-flex"><span class="grid h-8 w-8 place-items-center rounded-full bg-white/15 text-base">☎</span><span class="text-left"><span class="block text-[10px] font-semibold uppercase tracking-wider">Rufen Sie uns an</span><span class="mt-0.5 block text-xs font-semibold">+49 1577 5078320</span></span></a>
+      <button id="mobile-menu-button" class="grid h-10 w-10 place-items-center rounded-full border border-stone-300 lg:hidden" aria-label="Navigation öffnen" aria-expanded="false"><span class="text-xl">☰</span></button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-black/5 bg-[#faf8f3] px-5 py-4 lg:hidden"><div class="grid gap-4 text-sm"><a href="#home">Start</a><a href="#story">Unsere Küche</a><a href="#menu">Speisekarte</a><a href="#gallery">Einblicke</a><a href="#contact">Kontakt</a><a class="font-semibold text-[#a56525]" href="tel:+4915775078320">Rufen Sie uns an · +49 1577 5078320</a><a class="font-semibold text-[#a56525]" href="https://wa.me/4915775078320" target="_blank" rel="noreferrer">Tisch per WhatsApp anfragen ↗</a></div></div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero relative flex min-h-[720px] items-center pt-20 md:min-h-[790px]">
+      <div class="mx-auto w-full max-w-7xl px-6 py-24 lg:px-10">
+        <div class="max-w-[690px] text-white">
+          <p class="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[.25em] text-[#f0c38d]"><span class="h-px w-10 bg-[#f0c38d]"></span> Uigurische Küche in Duisburg</p>
+          <h1 class="text-5xl leading-[1.08] sm:text-6xl lg:text-[76px]">Eine Reise entlang<br class="hidden sm:block" /> der Seidenstraße.</h1>
+          <p class="mt-7 max-w-xl text-base leading-7 text-white/80 sm:text-lg">Frisch gezogene Nudeln, aromatische Gewürze und traditionelle uigurische Gerichte – täglich frisch und mit herzlicher Gastfreundschaft zubereitet.</p>
+          <div class="mt-9 flex flex-wrap gap-3"><a href="#menu" class="rounded-full bg-[#bd762d] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#a56525]">Speisekarte ansehen <span class="ml-2">↓</span></a><a href="https://wa.me/4915775078320" target="_blank" rel="noreferrer" class="rounded-full border border-white/60 px-7 py-4 text-sm font-semibold text-white transition hover:bg-white hover:text-[#25261f]">Tisch anfragen</a></div>
+          <div class="mt-14 flex items-center gap-4 text-xs text-white/70"><span class="flex text-[#edbd77]">✳</span><span>Frisch zubereitet und mit Sorgfalt serviert</span></div>
+        </div>
+      </div>
+      <a href="#story" class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 text-[10px] uppercase tracking-[.24em] text-white/70 md:block">Ana Yurt entdecken <span class="ml-2">↓</span></a>
+    </section>
+
+    <!-- Heritage and hospitality -->
+    <section id="story" class="scroll-mt-20 px-5 py-24 md:py-32">
+      <div class="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[.92fr_1.08fr] lg:gap-24">
+        <div><p class="eyebrow">Tradition und Gastfreundschaft</p><h2 class="mt-5 max-w-xl text-4xl leading-tight sm:text-5xl">Uigurische Küche.<br /><span class="italic text-[#a56525]">Ein Stück Seidenstraße.</span></h2><p class="mt-7 max-w-xl leading-7 text-stone-600">Die uigurische Küche ist über Jahrhunderte entlang der Seidenstraße entstanden und zählt zu den ältesten und vielfältigsten Küchentraditionen Zentralasiens. Hier verbinden sich Kulturen, Gewürze und Kochtechniken aus Ost und West.</p><p class="mt-4 max-w-xl leading-7 text-stone-600">Im Ana Yurt stehen Frische und handwerkliche Zubereitung im Mittelpunkt: Wir bereiten unsere Speisen täglich frisch zu, kneten Teige von Hand und ziehen Nudeln auf traditionelle Weise. Essen bedeutet für uns auch Respekt, Verantwortung und herzliche Gastfreundschaft. So bringen wir authentische uigurische Küche nach Duisburg.</p><a href="#menu" class="mt-8 inline-flex items-center gap-3 border-b border-[#bd762d] pb-2 text-sm font-semibold text-[#8f5825]">Unsere Gerichte entdecken <span>↗</span></a></div>
+        <div class="relative grid grid-cols-2 gap-4 sm:gap-5"><div class="gallery-card overflow-hidden rounded-t-[130px] rounded-b-2xl"><img class="gallery-img h-[340px] w-full object-cover sm:h-[440px]" src="https://anayurtuyghur.com/wp-content/uploads/2026/04/ccc76cf2-12f8-4474-9117-2cbf1c89e837-1024x768.jpeg" alt="Einblick in das Restaurant Ana Yurt" loading="lazy" /></div><div class="mt-12 gallery-card overflow-hidden rounded-2xl rounded-b-[130px]"><img class="gallery-img h-[290px] w-full object-cover sm:h-[370px]" src="https://anayurtuyghur.com/wp-content/uploads/2026/02/Ekran-goruntusu-2026-02-11-173734-1.png" alt="Uigurische Küche im Ana Yurt" loading="lazy" /></div><div class="absolute -bottom-5 left-[38%] grid h-24 w-24 place-items-center rounded-full border-[5px] border-[#faf8f3] bg-[#292b24] text-center text-[10px] uppercase leading-4 tracking-wider text-white sm:h-28 sm:w-28"><span>Herzlich<br /><b class="serif text-lg font-normal">willkommen</b><br />im Ana Yurt</span></div></div>
+      </div>
+    </section>
+
+    <!-- Interactive menu -->
+    <section id="menu" class="scroll-mt-20 bg-[#f0eee7] px-5 py-24 md:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p class="eyebrow">Aus unserer Küche</p><h2 class="mt-4 text-4xl sm:text-5xl">Was darf es heute sein?</h2><p class="mt-4 max-w-xl text-sm leading-6 text-stone-600">Traditionelle uigurische Gerichte, täglich frisch für Sie zubereitet.</p></div><a href="https://wa.me/4915775078320" target="_blank" rel="noreferrer" class="hidden rounded-full border border-stone-400 px-5 py-3 text-xs font-semibold transition hover:border-[#bd762d] hover:text-[#965c25] md:inline-flex">Gericht oder Tisch anfragen ↗</a></div>
+        <div id="menu-tabs" class="mt-10 flex gap-2 overflow-x-auto pb-3" role="tablist" aria-label="Speisekarten-Kategorien">
+          <button class="menu-tab rounded-full border border-stone-300 px-5 py-3 text-xs font-semibold" role="tab" aria-selected="true" data-category="all-food">Alle Speisen</button>
+          <button class="menu-tab rounded-full border border-stone-300 px-5 py-3 text-xs font-semibold" role="tab" aria-selected="false" data-category="salads">Salate & Vorspeisen</button>
+          <button class="menu-tab rounded-full border border-stone-300 px-5 py-3 text-xs font-semibold" role="tab" aria-selected="false" data-category="noodles">Nudeln & Suppen</button>
+          <button class="menu-tab rounded-full border border-stone-300 px-5 py-3 text-xs font-semibold" role="tab" aria-selected="false" data-category="mains">Hauptgerichte</button>
+          <button class="menu-tab rounded-full border border-stone-300 px-5 py-3 text-xs font-semibold" role="tab" aria-selected="false" data-category="dumplings">Teigtaschen & Brot</button>
+          <button class="menu-tab rounded-full border border-stone-300 px-5 py-3 text-xs font-semibold" role="tab" aria-selected="false" data-category="drinks">Getränke & Tee</button>
+        </div>
+        <div id="menu-grid" class="mt-5 grid gap-4 md:grid-cols-2"></div>
+        <div class="mt-9 flex items-center gap-2 text-xs text-stone-500"><span class="grid h-6 w-6 place-items-center rounded-full border border-emerald-700/30 text-[10px] text-emerald-800">H</span> Fragen zu Zutaten und Allergenen beantworten wir gerne vor Ort oder telefonisch.</div>
+      </div>
+    </section>
+
+    <!-- Image gallery -->
+    <section id="gallery" class="scroll-mt-20 px-5 py-24 md:py-28">
+      <div class="mx-auto max-w-7xl"><div class="mb-11 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p class="eyebrow">Einblicke ins Ana Yurt</p><h2 class="mt-4 text-4xl sm:text-5xl">Ein Platz für alle.</h2></div><p class="max-w-sm text-sm leading-6 text-stone-600">Entdecken Sie unser Restaurant und einige der Gerichte, die wir mit Sorgfalt für Sie zubereiten.</p></div>
+        <div class="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          <figure class="gallery-card group relative col-span-2 row-span-2 overflow-hidden rounded-2xl"><img class="gallery-img h-full min-h-[310px] w-full object-cover sm:min-h-[490px]" src="https://anayurtuyghur.com/wp-content/uploads/2026/04/5ac067cc-c077-4b3f-9918-8381b33db8b0.jpeg" alt="Gericht aus der Küche des Ana Yurt" loading="lazy" /><figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-6 pt-20 text-white"><span class="text-xs uppercase tracking-[.18em] text-white/75">Frisch für Sie zubereitet</span><span class="mt-1 block serif text-2xl">Uigurische Küche in Duisburg</span></figcaption></figure>
+          <figure class="gallery-card relative overflow-hidden rounded-2xl"><img class="gallery-img h-[190px] w-full object-cover sm:h-[235px]" src="https://anayurtuyghur.com/wp-content/uploads/2026/03/Klassische-Nudelsuppe.png" alt="Klassische Nudelsuppe aus dem Ana Yurt" loading="lazy" /><figcaption class="absolute bottom-3 left-4 text-sm font-semibold text-white drop-shadow">Klassische Nudelsuppe</figcaption></figure>
+          <figure class="gallery-card relative overflow-hidden rounded-2xl"><img class="gallery-img h-[190px] w-full object-cover sm:h-[235px]" src="https://anayurtuyghur.com/wp-content/uploads/2026/03/Gebratene-Nudeln-mit-barlauch.png" alt="Gebratene Nudeln mit Bärlauch" loading="lazy" /><figcaption class="absolute bottom-3 left-4 text-sm font-semibold text-white drop-shadow">Gebratene Nudeln mit Bärlauch</figcaption></figure>
+          <figure class="gallery-card relative overflow-hidden rounded-2xl"><img class="gallery-img h-[190px] w-full object-cover sm:h-[235px]" src="https://anayurtuyghur.com/wp-content/uploads/2026/03/Gedampfte-Teigtaschen.png" alt="Gedämpfte uigurische Teigtaschen" loading="lazy" /><figcaption class="absolute bottom-3 left-4 text-sm font-semibold text-white drop-shadow">Gedämpfte Teigtaschen</figcaption></figure>
+          <figure class="gallery-card relative overflow-hidden rounded-2xl"><img class="gallery-img h-[190px] w-full object-cover sm:h-[235px]" src="https://anayurtuyghur.com/wp-content/uploads/2026/04/5011954a-4ca1-42c1-8ee1-5292076363a4.jpeg" alt="Weitere Einblicke in die Speisen des Ana Yurt" loading="lazy" /><figcaption class="absolute bottom-3 left-4 text-sm font-semibold text-white drop-shadow">Aus unserer Küche</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservation form -->
+    <section id="reservation" class="scroll-mt-20 bg-[#292b24] px-5 py-24 text-white md:py-28">
+      <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.78fr_1.22fr] lg:gap-24">
+        <div class="pt-2"><p class="eyebrow !text-[#e6b77f]">Wir freuen uns auf Ihren Besuch</p><h2 class="mt-5 text-4xl leading-tight sm:text-5xl">Gutes Essen.<br />Zeit füreinander.<br /><span class="italic text-[#e6b77f]">Willkommen im Ana Yurt.</span></h2><p class="mt-6 max-w-md text-sm leading-7 text-white/65">Reservieren Sie Ihren Tisch ganz unkompliziert per WhatsApp oder senden Sie uns Ihre Anfrage über das Formular. Wir melden uns zur Bestätigung bei Ihnen.</p><div class="mt-9 space-y-4 text-sm text-white/75"><p><span class="mr-3 text-[#e6b77f]">✳</span>Unser Restaurant bietet Platz für bis zu 80 Personen.</p><p><span class="mr-3 text-[#e6b77f]">✳</span>Für besondere Anlässe sprechen Sie uns gerne an.</p></div><a href="https://wa.me/4915775078320" target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full border border-white/40 px-5 py-3 text-sm font-semibold hover:bg-white hover:text-[#292b24]">Direkt per WhatsApp anfragen ↗</a></div>
+        <form id="reservation-form" class="rounded-2xl bg-[#f7f5ef] p-6 text-[#292b24] sm:p-9">
+          <div class="mb-7 flex items-end justify-between"><div><p class="eyebrow">Besuch planen</p><h3 class="mt-2 serif text-2xl">Tisch anfragen</h3></div><span class="text-xs text-stone-500">* Pflichtfeld</span></div>
+          <div class="grid gap-x-5 gap-y-4 sm:grid-cols-2">
+            <label class="text-xs font-semibold">Vor- und Nachname *<input name="name" required autocomplete="name" placeholder="Ihr Name" class="mt-2 w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-normal" /></label>
+            <label class="text-xs font-semibold">E-Mail-Adresse *<input name="email" type="email" required autocomplete="email" placeholder="name@beispiel.de" class="mt-2 w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-normal" /></label>
+            <label class="text-xs font-semibold">Telefonnummer *<input name="phone" type="tel" required autocomplete="tel" placeholder="+49 …" class="mt-2 w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-normal" /></label>
+            <label class="text-xs font-semibold">Personenzahl *<select name="guests" required class="mt-2 w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-normal"><option value="">Personenzahl wählen</option><option>1 Person</option><option>2 Personen</option><option>3 Personen</option><option>4 Personen</option><option>5 Personen</option><option>6 Personen</option><option>7 Personen</option><option>8 Personen</option><option>9 Personen</option><option>10 oder mehr Personen</option></select></label>
+            <label class="text-xs font-semibold">Datum *<input name="date" type="date" required class="mt-2 w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-normal" /></label>
+            <label class="text-xs font-semibold">Uhrzeit *<select name="time" required class="mt-2 w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-normal"><option value="">Uhrzeit wählen</option><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option></select></label>
+            <label class="text-xs font-semibold sm:col-span-2">Wünsche oder Hinweise zu Allergien<textarea name="requests" rows="3" placeholder="Wie können wir Ihren Besuch besonders schön machen?" class="mt-2 w-full resize-y rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-normal"></textarea></label>
+          </div>
+          <button type="submit" class="mt-5 flex w-full items-center justify-center gap-3 rounded-full bg-[#b8732e] px-6 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#9e6024]">Reservierungsanfrage senden <span>↗</span></button><p id="reservation-status" class="mt-3 text-center text-[11px] text-stone-500" aria-live="polite">Ihre Anfrage wird gespeichert. Wir melden uns zur Bestätigung bei Ihnen.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Location and contact -->
+    <section id="contact" class="scroll-mt-20 px-5 py-24 md:py-28">
+      <div class="mx-auto max-w-7xl"><div class="mb-12"><p class="eyebrow">Besuchen Sie uns</p><h2 class="mt-4 text-4xl sm:text-5xl">Wir freuen uns auf Sie.</h2></div>
+        <div class="grid overflow-hidden rounded-2xl border border-stone-200 bg-white lg:grid-cols-[.9fr_1.1fr]">
+          <div class="p-7 sm:p-10"><div class="grid gap-9 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div><p class="eyebrow">Hier finden Sie uns</p><p class="mt-3 serif text-xl">Ana Yurt</p><p class="mt-2 text-sm leading-6 text-stone-600">Münzstraße 19<br />47051 Duisburg</p><a href="https://www.google.com/maps/dir/?api=1&destination=M%C3%BCnzstra%C3%9Fe+19%2C+47051+Duisburg" target="_blank" rel="noreferrer" class="mt-3 inline-block text-xs font-semibold text-[#9f6227]">Route planen ↗</a></div>
+            <div><p class="eyebrow">Öffnungszeiten</p><p class="mt-3 text-sm leading-6 text-stone-600">Bitte erfragen Sie unsere aktuellen Öffnungszeiten telefonisch.</p></div>
+            <div><p class="eyebrow">Kontakt</p><a href="tel:+4915775078320" class="mt-3 block text-sm text-stone-700 hover:text-[#a56525]">+49 1577 5078320</a><a href="https://wa.me/4915775078320" target="_blank" rel="noreferrer" class="mt-2 block text-sm text-stone-700 hover:text-[#a56525]">WhatsApp-Nachricht senden ↗</a></div>
+            <div><p class="eyebrow">Besondere Anlässe</p><p class="mt-3 text-sm leading-6 text-stone-600">Unser Restaurant bietet Sitzplätze für bis zu 80 Personen.</p></div>
+          </div></div>
+          <div class="relative min-h-[320px] bg-[#e9e5da]"><iframe title="Karte mit dem Standort des Ana Yurt in Duisburg" class="absolute inset-0 h-full w-full border-0 grayscale-[.3]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=M%C3%BCnzstra%C3%9Fe%2019%2C%2047051%20Duisburg&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#22241f] px-5 py-10 text-white"><div class="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-center"><a href="#home" class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-full border border-white/30 serif text-xl">A</span><span><span class="block serif text-lg">Ana Yurt</span><span class="block text-[9px] uppercase tracking-[.18em] text-white/50">Uigurische Küche · Duisburg</span></span></a><div class="flex flex-wrap gap-x-6 gap-y-3 text-xs text-white/60"><a class="hover:text-white" href="#story">Unsere Küche</a><a class="hover:text-white" href="#menu">Speisekarte</a><a class="hover:text-white" href="#gallery">Einblicke</a><a class="hover:text-white" href="#reservation">Reservierung</a><a class="hover:text-white" href="#contact">Kontakt</a></div><div class="flex items-center gap-3 text-xs text-white/60"><span class="grid h-7 w-7 place-items-center rounded-full border border-emerald-600/70 text-[10px] text-emerald-400">H</span>Frisch und mit Sorgfalt gekocht</div></div><div class="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-5 text-[11px] text-white/40"><span>© <span id="year"></span> Ana Yurt. Alle Rechte vorbehalten.</span></div></footer>
+
+  <a id="cart-link" href="checkout.html" class="hidden fixed bottom-5 left-1/2 z-40 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 flex items-center justify-between gap-4 rounded-full bg-[#292b24] px-6 py-4 text-white shadow-2xl transition hover:bg-black">
+    <span class="flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-full bg-white/10" aria-hidden="true">🛍</span><span><span class="block text-sm font-semibold">Warenkorb ansehen</span><span data-cart-count class="block text-xs text-white/65">0 Artikel</span></span></span>
+    <span data-cart-total class="shrink-0 text-sm font-semibold">0,00&nbsp;€</span>
+  </a>
+
+  <!-- Reservation confirmation toast -->
+
+  <!-- Reservation confirmation toast -->
+  <div id="toast" role="status" aria-live="polite" class="toast fixed bottom-5 left-1/2 z-[60] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-xl bg-[#292b24] px-5 py-4 text-white shadow-2xl"><div class="flex items-start gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-emerald-600 text-sm">✓</span><div><p class="font-semibold">Vielen Dank!</p><p class="mt-1 text-xs leading-5 text-white/70">Ihre Anfrage wurde gespeichert. Wir melden uns zur Bestätigung bei Ihnen.</p></div><button id="toast-close" class="ml-auto text-white/60 hover:text-white" aria-label="Meldung schließen">×</button></div></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
