@@ -169,8 +169,22 @@
         dateInput.min = localDate();
         showToast();
       } catch (error) {
-        reservationStatus.textContent = error.message || 'Verbindung fehlgeschlagen. Bitte versuchen Sie es erneut.';
-        reservationStatus.classList.add('text-red-700');
+        const booking = Object.fromEntries(new FormData(reservationForm));
+        const message = [
+          'Hallo Ana Yurt, ich möchte einen Tisch reservieren.',
+          `Name: ${booking.name}`, `E-Mail: ${booking.email}`, `Telefon: ${booking.phone}`,
+          `Personen: ${booking.guests}`, `Datum: ${booking.date}`, `Uhrzeit: ${booking.time}`,
+          booking.requests ? `Hinweise: ${booking.requests}` : ''
+        ].filter(Boolean).join('\n');
+        reservationStatus.textContent = 'Online-Speicherung ist auf diesem Website-Host nicht verfügbar. Senden Sie Ihre Anfrage direkt: ';
+        reservationStatus.classList.remove('text-red-700');
+        const whatsappLink = document.createElement('a');
+        whatsappLink.href = `https://wa.me/4915775078320?text=${encodeURIComponent(message)}`;
+        whatsappLink.target = '_blank';
+        whatsappLink.rel = 'noopener noreferrer';
+        whatsappLink.className = 'font-semibold text-[#9f6227] underline';
+        whatsappLink.textContent = 'Per WhatsApp senden';
+        reservationStatus.appendChild(whatsappLink);
       } finally {
         submitButton.disabled = false;
         submitButton.classList.remove('opacity-60', 'cursor-wait');
