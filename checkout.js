@@ -1,5 +1,5 @@
 (() => {
-  const storageKey = 'ana-yurt-cart';
+  const storageKey = 'site-refresh-cart';
   const list = document.getElementById('checkout-items');
   const emptyCart = document.getElementById('empty-cart');
   const summary = document.getElementById('checkout-summary');

@@ -1,8 +1,8 @@
 {
-  "name": "anayurtrestaurant",
+  "name": "site-refresh-restaurant",
   "version": "1.0.0",
   "private": true,
-  "description": "Ana Yurt restaurant website with reservations stored in SQLite",
+  "description": "Site Refresh Restaurant demo website",
   "scripts": {
     "start": "node server.js"
   },

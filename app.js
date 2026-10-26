@@ -1,48 +1,35 @@
-    // Vollständige Speisekarte nach der aktuellen Ana-Yurt-Karte.
+    // Beispielkarte der fiktiven Trattoria Sorella.
     const dishes = [
-      {category:'salads',name:'Rindfleischsalat',description:'Zartes Rindfleisch mit aromatischem Chiliöl und Gewürzen.',price:'7,90 €'},
-      {category:'salads',name:'Hähnchensalat mit Chilisauce',description:'Zartes Hähnchenfleisch in würziger Chilisauce.',price:'6,90 €'},
-      {category:'salads',name:'Auberginensalat',description:'Frischer Auberginensalat mit Gewürzen und Kräutern.',price:'4,90 €'},
-      {category:'salads',name:'Gurkensalat',description:'Frischer Salat aus Gurken, fein und leicht gewürzt.',price:'4,90 €'},
-      {category:'salads',name:'Uigurischer Salat',description:'Frischer Gemüsesalat mit würzigem Dressing nach uigurischer Art.',price:'4,90 €'},
-      {category:'salads',name:'Karottensalat',description:'Frischer Karottensalat, leicht gewürzt.',price:'4,90 €'},
-      {category:'noodles',name:'Gebratene Nudeln mit Bärlauch',description:'Gebratene Nudeln mit aromatischem Bärlauch und Gewürzen.',price:'13,90 €'},
-      {category:'noodles',name:'Ana Yurt Leghmen',description:'Handgezogene Nudeln mit Gemüse und Fleisch nach uigurischer Art.',price:'14,90 €'},
-      {category:'noodles',name:'Leghmen',description:'Handgezogene Nudeln mit Fleisch, Gemüse und würziger Sauce.',price:'12,90 €'},
-      {category:'noodles',name:'Suyru Leghmen',description:'Uigurische Nudelsuppe mit Fleisch, Gemüse und handgezogenen Nudeln.',price:'13,90 €'},
-      {category:'noodles',name:'Dindin-Nudeln',description:'Klein geschnittene Nudeln mit Rindfleisch, Gemüse und würziger Sauce.',price:'13,90 €'},
-      {category:'noodles',name:'Gebratene Nudeln mit Gemüse',description:'Gebratene Nudeln mit frischem Gemüse und aromatischen Gewürzen.',price:'13,90 €'},
-      {category:'mains',name:'Kung Pao Huhn',description:'Gebratenes Huhn mit Erdnüssen, Gemüse und würziger Chilisauce.',price:'15,90 €'},
-      {category:'mains',name:'Großer Teller Hähnchen',description:'Gebratenes Hähnchen mit Gemüse und Gewürzen. Großer oder kleiner Teller.',price:'14,90 € / 39,90 €'},
-      {category:'mains',name:'Gebratenes Hähnchen mit Nudeln',description:'Gebratenes Hähnchen mit Nudeln und Gemüse in würziger Sauce.',price:'17,90 €'},
-      {category:'mains',name:'Gebratenes Lammfleisch mit Gemüse',description:'Zart gebratenes Lammfleisch mit frischem Gemüse und Gewürzen.',price:'15,90 €'},
-      {category:'dumplings',name:'Gedämpfte Teigtaschen',description:'Gedämpfte Teigtaschen, gefüllt mit Fleisch und Gewürzen.',price:'7,90 €'},
-      {category:'dumplings',name:'Gebratene Teigtaschen',description:'Knusprig gebratene Teigtaschen mit Fleischfüllung.',price:'7,90 €'},
-      {category:'dumplings',name:'Göchnan',description:'Uigurisches gedämpftes Brot, serviert mit Fleisch und Gemüse.',price:'11,90 €'},
-      {category:'dumplings',name:'Gekochte Teigtaschen',description:'Gekochte Teigtaschen, gefüllt mit Fleisch und Gewürzen.',price:'13,90 €'},
-      {category:'mains',name:'Gebratenes Lammfleisch',description:'Zart gebratenes Lammfleisch mit aromatischen Gewürzen.',price:'20,90 €'},
-      {category:'mains',name:'Lammspieße',description:'Gegrillte Lammspieße mit uigurischen Gewürzen. Wahlweise ohne Beilagen oder mit Salat und Reis.',price:'11,90 € / 14,90 €'},
-      {category:'mains',name:'Tonur Kebab',description:'Uigurisches Lammfleisch aus dem Tonur-Ofen. Bitte einen Tag vorher bestellen.',price:'69,90 €'},
-      {category:'mains',name:'Polo',description:'Uigurischer Reis mit Lammfleisch, Karotten und Gewürzen. Nur samstags erhältlich.',price:'14,90 €'},
-      {category:'mains',name:'Gebratener Spinat mit Ei',description:'Frischer Spinat, gebraten mit Ei und Gewürzen.',price:'10,90 €'},
-      {category:'noodles',name:'Nudelsuppe mit geschmortem Rindfleisch',description:'Kräftige Nudelsuppe mit geschmortem Rindfleisch und Gewürzen.',price:'13,90 €'},
-      {category:'noodles',name:'Klassische Nudelsuppe',description:'Traditionelle Suppe mit Nudeln, Gemüse und aromatischen Gewürzen.',price:'12,90 €'},
-      {category:'noodles',name:'Nudelsalat mit Lammfleisch',description:'Breite Nudeln mit zartem Fleisch, Gemüse und würziger Sauce.',price:'13,90 €'},
-      {category:'noodles',name:'Bandnudeln mit Rindfleisch',description:'Bandnudeln mit Rindfleisch und würzigem Dressing.',price:'14,90 €'},
-      {category:'mains',name:'Extra Nudeln oder Reis',description:'Portion Nudeln oder Reis als Beilage.',price:'2,50 €'},
-      {category:'drinks',name:'Mineralwasser still / medium',description:'Mineralwasser, klein oder groß.',price:'3,00 € / 7,00 €'},
-      {category:'drinks',name:'Fritz-Kola / Fritz-Kola Zero',description:'Fritz-Kola nach Wahl.',price:'3,00 €'},
-      {category:'drinks',name:'Fritz-Rhabarber',description:'Erfrischende Rhabarberlimonade von Fritz.',price:'3,00 €'},
-      {category:'drinks',name:'Fritz-Apfelschorle',description:'Apfelsaftschorle von Fritz.',price:'3,00 €'},
-      {category:'drinks',name:'Fritz-Limo',description:'Fritz-Limonade.',price:'3,00 €'},
-      {category:'drinks',name:'Fritz-Orange',description:'Orangenlimonade von Fritz.',price:'3,00 €'},
-      {category:'drinks',name:'Fritz-Mischmasch',description:'Fritz-Kola mit Orange.',price:'3,00 €'},
-      {category:'drinks',name:'Eistee',description:'Erfrischender Eistee.',price:'3,50 €'},
-      {category:'drinks',name:'Uigurischer Tee',description:'Traditioneller uigurischer Tee, klein oder groß.',price:'2,50 € / 7,00 €'},
-      {category:'drinks',name:'Ghulja-Tee',description:'Aromatischer Tee nach Ghulja-Art, klein oder groß.',price:'2,50 € / 7,00 €'},
-      {category:'drinks',name:'Grüner Tee',description:'Grüner Tee, klein oder groß.',price:'2,50 € / 7,00 €'}
-    ];
-    const grid = document.getElementById('menu-grid');
+      {category:"salads",name:"Caprese",description:"Tomaten, Mozzarella, Basilikum und Olivenöl.",price:"9,50 €"},
+      {category:"salads",name:"Burrata mit Pfirsich",description:"Burrata, Pfirsich, Rucola und Balsamico.",price:"12,50 €"},
+      {category:"salads",name:"Caesar Salad",description:"Römersalat, Parmesan, Croûtons und hausgemachtes Dressing.",price:"10,50 €"},
+      {category:"salads",name:"Antipasti misti",description:"Gegrillte Zucchini, Paprika und Aubergine.",price:"11,00 €"},
+      {category:"salads",name:"Bruschetta al pomodoro",description:"Geröstetes Brot mit Tomaten, Knoblauch und Basilikum.",price:"7,50 €"},
+      {category:"noodles",name:"Tagliatelle al ragù",description:"Frische Bandnudeln mit Rinderragù und Parmesan.",price:"16,50 €"},
+      {category:"noodles",name:"Spaghetti aglio e olio",description:"Spaghetti mit Knoblauch, Olivenöl, Petersilie und Chili.",price:"13,00 €"},
+      {category:"noodles",name:"Pappardelle ai funghi",description:"Breite Eiernudeln mit Pilzen, Thymian und Parmesan.",price:"17,00 €"},
+      {category:"noodles",name:"Penne all’arrabbiata",description:"Penne in Tomatensauce mit Knoblauch und Chili.",price:"14,00 €"},
+      {category:"noodles",name:"Ravioli ricotta e spinaci",description:"Ravioli mit Ricotta und Spinat in Salbeibutter.",price:"17,50 €"},
+      {category:"noodles",name:"Lasagne al forno",description:"Pasta mit Rinderragù, Béchamel und Parmesan.",price:"17,00 €"},
+      {category:"mains",name:"Pollo alla griglia",description:"Gegrilltes Hähnchen mit Rosmarinkartoffeln und Kräutersalat.",price:"19,50 €"},
+      {category:"mains",name:"Saltimbocca alla romana",description:"Kalbsschnitzel mit Parmaschinken und Salbei.",price:"24,00 €"},
+      {category:"mains",name:"Branzino al forno",description:"Ofengebackener Wolfsbarsch mit Zitrone und Gemüse.",price:"25,50 €"},
+      {category:"mains",name:"Melanzane alla parmigiana",description:"Aubergine mit Tomate, Mozzarella und Parmesan.",price:"18,00 €"},
+      {category:"mains",name:"Bistecca al pepe verde",description:"Rindersteak mit Pfeffersauce und gegrilltem Gemüse.",price:"29,00 €"},
+      {category:"mains",name:"Risotto ai funghi",description:"Cremiges Risotto mit Pilzen, Thymian und Parmesan.",price:"18,00 €"},
+      {category:"mains",name:"Gnocchi al pesto",description:"Kartoffelgnocchi mit Basilikumpesto und Pinienkernen.",price:"16,50 €"},
+      {category:"dumplings",name:"Focaccia al rosmarino",description:"Ofenbrot mit Rosmarin und Olivenöl.",price:"6,00 €"},
+      {category:"dumplings",name:"Arancini",description:"Knusprige Risottobällchen mit Mozzarella und Tomate.",price:"8,50 €"},
+      {category:"dumplings",name:"Calzone classico",description:"Teigtasche mit Mozzarella, Tomate und Basilikum.",price:"15,50 €"},
+      {category:"dumplings",name:"Panzerotti",description:"Gebackene Teigtaschen mit Ricotta und Spinat.",price:"9,50 €"},
+      {category:"drinks",name:"Acqua naturale / frizzante",description:"Italienisches Mineralwasser, still oder prickelnd.",price:"3,50 € / 6,50 €"},
+      {category:"drinks",name:"Limonata",description:"Italienische Zitronenlimonade.",price:"4,00 €"},
+      {category:"drinks",name:"Espresso",description:"Kräftiger Espresso aus frisch gemahlenen Bohnen.",price:"3,00 €"},
+      {category:"drinks",name:"Cappuccino",description:"Espresso mit cremig aufgeschäumter Milch.",price:"4,50 €"},
+      {category:"drinks",name:"Aperol Spritz",description:"Aperol, Prosecco und Soda mit Orangenscheibe.",price:"9,00 €"},
+      {category:"drinks",name:"Primitivo",description:"Fruchtiger Rotwein aus Apulien.",price:"8,00 € / 26,00 €"},
+      {category:"drinks",name:"Pinot Grigio",description:"Weißwein mit Noten von Birne und Zitrus.",price:"8,00 € / 26,00 €"}
+    ];    const grid = document.getElementById('menu-grid');
     // Speisen erhalten passende, neutrale Food-Fotos statt unzugeordneter Restaurant-Galeriebilder.
     const menuPhotos = {
       salads:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=85',
@@ -55,19 +42,14 @@
       tea:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=85',
       water:'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=500&q=85'
     };
-    const restaurantDishPhotos = {
-      'Klassische Nudelsuppe':'https://anayurtuyghur.com/wp-content/uploads/2026/03/Klassische-Nudelsuppe.png',
-      'Gebratene Nudeln mit Bärlauch':'https://anayurtuyghur.com/wp-content/uploads/2026/03/Gebratene-Nudeln-mit-barlauch.png',
-      'Gedämpfte Teigtaschen':'https://anayurtuyghur.com/wp-content/uploads/2026/03/Gedampfte-Teigtaschen.png',
-      'Gebratenes Hähnchen mit Nudeln':'https://anayurtuyghur.com/wp-content/uploads/2026/03/Gebratene-Hahnchen-mit-Nudeln.png'
-    };
+    const restaurantDishPhotos = {};
     function menuPhoto(dish) {
       const name = dish.name.toLowerCase();
       if (dish.category === 'drinks') return /tee/.test(name) ? menuPhotos.tea : /wasser/.test(name) ? menuPhotos.water : menuPhotos.drinks;
-      if (restaurantDishPhotos[dish.name]) return restaurantDishPhotos[dish.name];
-      if (/polo/.test(name)) return menuPhotos.polo;
+      if (/risotto|ravioli|gnocchi|lasagne|arancini/.test(name)) return menuPhotos.dumplings;
+      if (/pollo/.test(name)) return menuPhotos.chicken;
       if (/huhn|hähnchen/.test(name)) return menuPhotos.chicken;
-      if (/lamm|kebab|spieße/.test(name)) return menuPhotos.meat;
+      if (/bistecca|rag[uù]|saltimbocca/.test(name)) return menuPhotos.meat;
       return menuPhotos[dish.category] || menuPhotos.noodles;
     }
     function escapeHtml(value) {
@@ -86,7 +68,7 @@
       }).join('');
       refreshMenuQuantities();
     }
-    const cartStorageKey = 'ana-yurt-cart';
+    const cartStorageKey = 'site-refresh-cart';
     let cart = JSON.parse(localStorage.getItem(cartStorageKey) || '[]');
     function saveCart() {
       localStorage.setItem(cartStorageKey, JSON.stringify(cart));
@@ -171,15 +153,15 @@
       } catch (error) {
         const booking = Object.fromEntries(new FormData(reservationForm));
         const message = [
-          'Hallo Ana Yurt, ich möchte einen Tisch reservieren.',
+          'Hallo, ich möchte einen Tisch in der Trattoria Sorella reservieren.',
           `Name: ${booking.name}`, `E-Mail: ${booking.email}`, `Telefon: ${booking.phone}`,
           `Personen: ${booking.guests}`, `Datum: ${booking.date}`, `Uhrzeit: ${booking.time}`,
           booking.requests ? `Hinweise: ${booking.requests}` : ''
         ].filter(Boolean).join('\n');
-        reservationStatus.textContent = 'Online-Speicherung ist auf diesem Website-Host nicht verfügbar. Senden Sie Ihre Anfrage direkt: ';
+        reservationStatus.textContent = 'Online-Speicherung ist in dieser Demo nicht verfügbar. Rufen Sie uns für eine Reservierung an: ';
         reservationStatus.classList.remove('text-red-700');
         const whatsappLink = document.createElement('a');
-        whatsappLink.href = `https://wa.me/4915775078320?text=${encodeURIComponent(message)}`;
+        whatsappLink.href = `tel:+493055501234`;
         whatsappLink.target = '_blank';
         whatsappLink.rel = 'noopener noreferrer';
         whatsappLink.className = 'font-semibold text-[#9f6227] underline';
