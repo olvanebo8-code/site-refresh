@@ -45,6 +45,8 @@ GitHub Pages can serve the site, but Supabase provides the persistent database, 
 
 An administrator invitation has been sent to the email address provided by the site owner, and that account has the `admin` role. The invite recipient must accept the email invitation and set a password before signing in. The project's public signup option is disabled; create additional staff through dashboard invitations and assign each account only the role it needs.
 
+Invitation and password-recovery links that redirect to the site homepage are forwarded to `/admin/`, where the recipient can set a password. If an invitation link expires, open `/admin/`, enter the account email, and choose **Passwort vergessen?** to request a fresh recovery link. The user must set their own password; never store it in the website source.
+
 Only the Supabase project URL and anon/public key belong in frontend configuration. Order submission calculates prices from active database products, validates quantities and table numbers in SQL, and uses an idempotency ID so a retry cannot create a duplicate order.
 
 ## Payments and table status

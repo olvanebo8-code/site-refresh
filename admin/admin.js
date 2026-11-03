@@ -3,6 +3,8 @@
   const loginPanel = document.getElementById('login-panel');
   const dashboard = document.getElementById('dashboard');
   const loginError = document.getElementById('login-error');
+  const passwordPanel = document.getElementById('password-panel');
+  const passwordError = document.getElementById('password-error');
   const dashboardError = document.getElementById('dashboard-error');
   const tableFilter = document.getElementById('table-filter');
   const ordersElement = document.getElementById('admin-orders');
@@ -10,6 +12,20 @@
   let activeUserId;
   let liveChannel;
   let currentView = 'all';
+  const authParams = new URLSearchParams(window.location.hash.slice(1));
+  const authType = authParams.get('type');
+  let isPasswordSetup = ['invite', 'recovery'].includes(authType);
+
+  if (isPasswordSetup) {
+    passwordPanel.classList.remove('hidden');
+    document.getElementById('login-form').classList.add('hidden');
+  } else if (authParams.has('error') || authParams.has('error_code')) {
+    const errorCode = authParams.get('error_code');
+    showLoginError(errorCode === 'otp_expired'
+      ? 'Der Einladungs- oder Wiederherstellungslink ist abgelaufen. Fordern Sie unten einen neuen Passwort-Link an.'
+      : `Der Anmeldelink konnte nicht verwendet werden: ${authParams.get('error_description') || authParams.get('error') || errorCode}`);
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  }
 
   function showLoginError(message) {
     loginError.textContent = message;
@@ -120,6 +136,7 @@
   }
 
   async function openDashboard(user) {
+    if (isPasswordSetup) return;
     if (!user || user.app_metadata?.role !== 'admin') {
       activeUserId = null;
       if (client) await client.auth.signOut();
@@ -154,10 +171,10 @@
     if (client) {
       client.auth.getSession().then(({ data, error }) => {
         if (error) showLoginError(error.message);
-        else if (data.session) openDashboard(data.session.user);
+        else if (data.session && !isPasswordSetup) openDashboard(data.session.user);
       });
       client.auth.onAuthStateChange((_event, session) => {
-        if (session) openDashboard(session.user);
+        if (session && !isPasswordSetup) openDashboard(session.user);
         else {
           activeUserId = null;
           loginPanel.classList.remove('hidden');
@@ -187,6 +204,51 @@
       if (error) throw error;
     } catch (error) {
       showLoginError(`Anmeldung fehlgeschlagen: ${error.message || 'Bitte prüfen Sie Ihre Zugangsdaten.'}`);
+    }
+  });
+
+  document.getElementById('password-form').addEventListener('submit', async event => {
+    event.preventDefault();
+    passwordError.classList.add('hidden');
+    const form = new FormData(event.currentTarget);
+    const password = form.get('password');
+    if (password !== form.get('password-confirmation')) {
+      passwordError.textContent = 'Die Passwörter stimmen nicht überein.';
+      passwordError.classList.remove('hidden');
+      return;
+    }
+    try {
+      const supabase = requireClient();
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) throw sessionError;
+      if (!sessionData.session) throw new Error('Der Link ist abgelaufen oder wurde bereits verwendet. Fordern Sie einen neuen Passwort-Link an.');
+      const { data, error } = await supabase.auth.updateUser({ password });
+      if (error) throw error;
+      isPasswordSetup = false;
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+      passwordPanel.classList.add('hidden');
+      document.getElementById('login-form').classList.remove('hidden');
+      if (data.user) await openDashboard(data.user);
+      else showLoginError('Passwort gespeichert. Melden Sie sich bitte mit Ihrem neuen Passwort an.');
+    } catch (error) {
+      passwordError.textContent = `Passwort konnte nicht gespeichert werden: ${error.message || 'Bitte fordern Sie einen neuen Link an.'}`;
+      passwordError.classList.remove('hidden');
+    }
+  });
+
+  document.getElementById('forgot-password').addEventListener('click', async () => {
+    loginError.classList.add('hidden');
+    const email = document.querySelector('#login-form [name="email"]').value.trim();
+    if (!email) {
+      showLoginError('Geben Sie zuerst Ihre E-Mail-Adresse ein.');
+      return;
+    }
+    try {
+      const { error } = await requireClient().auth.resetPasswordForEmail(email);
+      if (error) throw error;
+      showLoginError('Wenn für diese Adresse ein Konto besteht, wurde ein Link zum Festlegen eines neuen Passworts gesendet. Der Link führt zur Verwaltungsseite.');
+    } catch (error) {
+      showLoginError(`Passwort-Link konnte nicht angefordert werden: ${error.message || 'Verbindungsfehler'}`);
     }
   });
 

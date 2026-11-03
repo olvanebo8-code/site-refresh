@@ -28,10 +28,21 @@
       <h1 class="mt-3 text-4xl">Verwaltung</h1>
       <p class="mt-3 text-sm leading-6 text-stone-600">Melden Sie sich mit dem Administrator-Konto Ihres Supabase-Projekts an.</p>
       <p id="supabase-setup" class="mt-3 hidden rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900" role="status"></p>
+      <section id="password-panel" class="mt-6 hidden rounded-xl border border-[#bd762d]/30 bg-[#fffaf3] p-4" aria-labelledby="password-title">
+        <h2 id="password-title" class="serif text-xl">Passwort festlegen</h2>
+        <p class="mt-2 text-sm leading-6 text-stone-600">Legen Sie ein Passwort für Ihr Administratorkonto fest, um die Einladung abzuschließen.</p>
+        <form id="password-form" class="mt-4 grid gap-3">
+          <label class="text-xs font-semibold">Neues Passwort<input name="password" type="password" autocomplete="new-password" minlength="8" required class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-3 text-sm font-normal" /></label>
+          <label class="text-xs font-semibold">Passwort wiederholen<input name="password-confirmation" type="password" autocomplete="new-password" minlength="8" required class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-3 text-sm font-normal" /></label>
+          <button class="rounded-full bg-[#292b24] px-5 py-3 text-sm font-semibold text-white">Passwort speichern</button>
+        </form>
+        <p id="password-error" class="mt-3 hidden text-sm text-red-700" role="alert"></p>
+      </section>
       <form id="login-form" class="mt-6 grid gap-4">
         <label class="text-xs font-semibold">E-Mail-Adresse<input name="email" type="email" autocomplete="username" required class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-3 text-sm font-normal" /></label>
         <label class="text-xs font-semibold">Passwort<input name="password" type="password" autocomplete="current-password" required class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-3 text-sm font-normal" /></label>
         <button class="rounded-full bg-[#292b24] px-5 py-3 text-sm font-semibold text-white">Anmelden</button>
+        <button id="forgot-password" type="button" class="text-left text-sm font-semibold text-[#8f5825] hover:underline">Passwort vergessen?</button>
       </form>
       <p id="login-error" class="mt-4 hidden text-sm text-red-700" role="alert"></p>
     </section>

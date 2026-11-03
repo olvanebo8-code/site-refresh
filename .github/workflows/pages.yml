@@ -28,7 +28,7 @@ jobs:
       - name: Prepare website files
         run: |
           mkdir -p _site
-          cp index.html app.js checkout.html checkout.js tisch.html tisch.js ordering.js supabase-config.js _site/
+          cp index.html app.js auth-redirect.js checkout.html checkout.js tisch.html tisch.js ordering.js supabase-config.js _site/
           cp -R assets _site/assets
           cp -R admin kueche qr-codes _site/
       - name: Upload website artifact
