@@ -1,34 +1,34 @@
     // Beispielkarte der fiktiven Trattoria Sorella.
     const dishes = [
-      {category:"salads",name:"Caprese",description:"Tomaten, Mozzarella, Basilikum und Olivenöl.",price:"9,50 €"},
-      {category:"salads",name:"Burrata mit Pfirsich",description:"Burrata, Pfirsich, Rucola und Balsamico.",price:"12,50 €"},
-      {category:"salads",name:"Caesar Salad",description:"Römersalat, Parmesan, Croûtons und hausgemachtes Dressing.",price:"10,50 €"},
-      {category:"salads",name:"Antipasti misti",description:"Gegrillte Zucchini, Paprika und Aubergine.",price:"11,00 €"},
-      {category:"salads",name:"Bruschetta al pomodoro",description:"Geröstetes Brot mit Tomaten, Knoblauch und Basilikum.",price:"7,50 €"},
-      {category:"noodles",name:"Tagliatelle al ragù",description:"Frische Bandnudeln mit Rinderragù und Parmesan.",price:"16,50 €"},
-      {category:"noodles",name:"Spaghetti aglio e olio",description:"Spaghetti mit Knoblauch, Olivenöl, Petersilie und Chili.",price:"13,00 €"},
-      {category:"noodles",name:"Pappardelle ai funghi",description:"Breite Eiernudeln mit Pilzen, Thymian und Parmesan.",price:"17,00 €"},
-      {category:"noodles",name:"Penne all’arrabbiata",description:"Penne in Tomatensauce mit Knoblauch und Chili.",price:"14,00 €"},
-      {category:"noodles",name:"Ravioli ricotta e spinaci",description:"Ravioli mit Ricotta und Spinat in Salbeibutter.",price:"17,50 €"},
-      {category:"noodles",name:"Lasagne al forno",description:"Pasta mit Rinderragù, Béchamel und Parmesan.",price:"17,00 €"},
-      {category:"mains",name:"Pollo alla griglia",description:"Gegrilltes Hähnchen mit Rosmarinkartoffeln und Kräutersalat.",price:"19,50 €"},
-      {category:"mains",name:"Saltimbocca alla romana",description:"Kalbsschnitzel mit Parmaschinken und Salbei.",price:"24,00 €"},
-      {category:"mains",name:"Branzino al forno",description:"Ofengebackener Wolfsbarsch mit Zitrone und Gemüse.",price:"25,50 €"},
-      {category:"mains",name:"Melanzane alla parmigiana",description:"Aubergine mit Tomate, Mozzarella und Parmesan.",price:"18,00 €"},
-      {category:"mains",name:"Bistecca al pepe verde",description:"Rindersteak mit Pfeffersauce und gegrilltem Gemüse.",price:"29,00 €"},
-      {category:"mains",name:"Risotto ai funghi",description:"Cremiges Risotto mit Pilzen, Thymian und Parmesan.",price:"18,00 €"},
-      {category:"mains",name:"Gnocchi al pesto",description:"Kartoffelgnocchi mit Basilikumpesto und Pinienkernen.",price:"16,50 €"},
-      {category:"dumplings",name:"Focaccia al rosmarino",description:"Ofenbrot mit Rosmarin und Olivenöl.",price:"6,00 €"},
-      {category:"dumplings",name:"Arancini",description:"Knusprige Risottobällchen mit Mozzarella und Tomate.",price:"8,50 €"},
-      {category:"dumplings",name:"Calzone classico",description:"Teigtasche mit Mozzarella, Tomate und Basilikum.",price:"15,50 €"},
-      {category:"dumplings",name:"Panzerotti",description:"Gebackene Teigtaschen mit Ricotta und Spinat.",price:"9,50 €"},
-      {category:"drinks",name:"Acqua naturale / frizzante",description:"Italienisches Mineralwasser, still oder prickelnd.",price:"3,50 € / 6,50 €"},
-      {category:"drinks",name:"Limonata",description:"Italienische Zitronenlimonade.",price:"4,00 €"},
-      {category:"drinks",name:"Espresso",description:"Kräftiger Espresso aus frisch gemahlenen Bohnen.",price:"3,00 €"},
-      {category:"drinks",name:"Cappuccino",description:"Espresso mit cremig aufgeschäumter Milch.",price:"4,50 €"},
-      {category:"drinks",name:"Aperol Spritz",description:"Aperol, Prosecco und Soda mit Orangenscheibe.",price:"9,00 €"},
-      {category:"drinks",name:"Primitivo",description:"Fruchtiger Rotwein aus Apulien.",price:"8,00 € / 26,00 €"},
-      {category:"drinks",name:"Pinot Grigio",description:"Weißwein mit Noten von Birne und Zitrus.",price:"8,00 € / 26,00 €"}
+      {id:"caprese",category:"salads",name:"Caprese",description:"Tomaten, Mozzarella, Basilikum und Olivenöl.",price:"9,50 €"},
+      {id:"burrata-pfirsich",category:"salads",name:"Burrata mit Pfirsich",description:"Burrata, Pfirsich, Rucola und Balsamico.",price:"12,50 €"},
+      {id:"caesar-salad",category:"salads",name:"Caesar Salad",description:"Römersalat, Parmesan, Croûtons und hausgemachtes Dressing.",price:"10,50 €"},
+      {id:"antipasti-misti",category:"salads",name:"Antipasti misti",description:"Gegrillte Zucchini, Paprika und Aubergine.",price:"11,00 €"},
+      {id:"bruschetta-pomodoro",category:"salads",name:"Bruschetta al pomodoro",description:"Geröstetes Brot mit Tomaten, Knoblauch und Basilikum.",price:"7,50 €"},
+      {id:"tagliatelle-ragu",category:"noodles",name:"Tagliatelle al ragù",description:"Frische Bandnudeln mit Rinderragù und Parmesan.",price:"16,50 €"},
+      {id:"spaghetti-aglio-olio",category:"noodles",name:"Spaghetti aglio e olio",description:"Spaghetti mit Knoblauch, Olivenöl, Petersilie und Chili.",price:"13,00 €"},
+      {id:"pappardelle-funghi",category:"noodles",name:"Pappardelle ai funghi",description:"Breite Eiernudeln mit Pilzen, Thymian und Parmesan.",price:"17,00 €"},
+      {id:"penne-arrabbiata",category:"noodles",name:"Penne all’arrabbiata",description:"Penne in Tomatensauce mit Knoblauch und Chili.",price:"14,00 €"},
+      {id:"ravioli-ricotta-spinaci",category:"noodles",name:"Ravioli ricotta e spinaci",description:"Ravioli mit Ricotta und Spinat in Salbeibutter.",price:"17,50 €"},
+      {id:"lasagne-forno",category:"noodles",name:"Lasagne al forno",description:"Pasta mit Rinderragù, Béchamel und Parmesan.",price:"17,00 €"},
+      {id:"pollo-griglia",category:"mains",name:"Pollo alla griglia",description:"Gegrilltes Hähnchen mit Rosmarinkartoffeln und Kräutersalat.",price:"19,50 €"},
+      {id:"saltimbocca-romana",category:"mains",name:"Saltimbocca alla romana",description:"Kalbsschnitzel mit Parmaschinken und Salbei.",price:"24,00 €"},
+      {id:"branzino-forno",category:"mains",name:"Branzino al forno",description:"Ofengebackener Wolfsbarsch mit Zitrone und Gemüse.",price:"25,50 €"},
+      {id:"melanzane-parmigiana",category:"mains",name:"Melanzane alla parmigiana",description:"Aubergine mit Tomate, Mozzarella und Parmesan.",price:"18,00 €"},
+      {id:"bistecca-pepe-verde",category:"mains",name:"Bistecca al pepe verde",description:"Rindersteak mit Pfeffersauce und gegrilltem Gemüse.",price:"29,00 €"},
+      {id:"risotto-funghi",category:"mains",name:"Risotto ai funghi",description:"Cremiges Risotto mit Pilzen, Thymian und Parmesan.",price:"18,00 €"},
+      {id:"gnocchi-pesto",category:"mains",name:"Gnocchi al pesto",description:"Kartoffelgnocchi mit Basilikumpesto und Pinienkernen.",price:"16,50 €"},
+      {id:"focaccia-rosmarino",category:"dumplings",name:"Focaccia al rosmarino",description:"Ofenbrot mit Rosmarin und Olivenöl.",price:"6,00 €"},
+      {id:"arancini",category:"dumplings",name:"Arancini",description:"Knusprige Risottobällchen mit Mozzarella und Tomate.",price:"8,50 €"},
+      {id:"calzone-classico",category:"dumplings",name:"Calzone classico",description:"Teigtasche mit Mozzarella, Tomate und Basilikum.",price:"15,50 €"},
+      {id:"panzerotti",category:"dumplings",name:"Panzerotti",description:"Gebackene Teigtaschen mit Ricotta und Spinat.",price:"9,50 €"},
+      {id:"acqua",category:"drinks",name:"Acqua naturale / frizzante",description:"Italienisches Mineralwasser, still oder prickelnd.",price:"3,50 € / 6,50 €",optionLabels:["0,25 l","0,75 l"]},
+      {id:"limonata",category:"drinks",name:"Limonata",description:"Italienische Zitronenlimonade.",price:"4,00 €"},
+      {id:"espresso",category:"drinks",name:"Espresso",description:"Kräftiger Espresso aus frisch gemahlenen Bohnen.",price:"3,00 €"},
+      {id:"cappuccino",category:"drinks",name:"Cappuccino",description:"Espresso mit cremig aufgeschäumter Milch.",price:"4,50 €"},
+      {id:"aperol-spritz",category:"drinks",name:"Aperol Spritz",description:"Aperol, Prosecco und Soda mit Orangenscheibe.",price:"9,00 €"},
+      {id:"primitivo",category:"drinks",name:"Primitivo",description:"Fruchtiger Rotwein aus Apulien.",price:"8,00 € / 26,00 €",optionLabels:["Glas","Flasche"]},
+      {id:"pinot-grigio",category:"drinks",name:"Pinot Grigio",description:"Weißwein mit Noten von Birne und Zitrus.",price:"8,00 € / 26,00 €",optionLabels:["Glas","Flasche"]}
     ];    const grid = document.getElementById('menu-grid');
     // Speisen erhalten passende, neutrale Food-Fotos statt unzugeordneter Restaurant-Galeriebilder.
     const menuPhotos = {
@@ -62,31 +62,50 @@
       grid.innerHTML = items.map((dish, index) => {
         const priceOptions = (dish.price.match(/\d+,\d{2}/g) || []).map(value => Number(value.replace(',', '.')));
         const priceSelector = priceOptions.length > 1
-          ? `<label class="flex flex-col items-end gap-1 text-[10px] text-stone-500">Preisoption<select data-price-choice class="rounded border border-stone-300 bg-white px-2 py-1 text-xs text-stone-800">${priceOptions.map((price, option) => `<option value="${price}" ${option === 0 ? 'selected' : ''}>Option ${option + 1} · ${price.toFixed(2).replace('.', ',')} €</option>`).join('')}</select></label>`
+          ? `<label class="flex flex-col items-end gap-1 text-[10px] text-stone-500">Preisoption<select data-price-choice class="rounded border border-stone-300 bg-white px-2 py-1 text-xs text-stone-800">${priceOptions.map((price, option) => `<option value="${price}" data-product-id="${dish.id}-${option + 1}" ${option === 0 ? 'selected' : ''}>${escapeHtml(dish.optionLabels?.[option] || `Option ${option + 1}`)} · ${price.toFixed(2).replace('.', ',')} €</option>`).join('')}</select></label>`
           : `<span class="text-sm font-semibold text-[#985d26]">${escapeHtml(dish.price)}</span>`;
         return `<article class="dish-card flex gap-4 rounded-xl border border-stone-200 bg-[#faf9f5] p-3 sm:gap-5 sm:p-4" data-menu-index="${dishes.indexOf(dish)}" style="animation-delay:${index % 8 * 35}ms"><img class="h-24 w-24 shrink-0 rounded-lg object-cover sm:h-28 sm:w-28" src="${menuPhoto(dish)}" alt="${escapeHtml(dish.name)} – Serviervorschlag" loading="lazy" /><div class="flex min-w-0 flex-1 flex-col justify-center"><div class="flex items-start justify-between gap-2"><h3 class="serif text-lg leading-tight sm:text-xl">${escapeHtml(dish.name)}</h3><div class="flex shrink-0 flex-col items-end gap-2">${priceSelector}<div class="flex items-center gap-2 rounded-full border border-stone-300 bg-white p-1"><button type="button" class="grid h-7 w-7 place-items-center rounded-full text-lg font-semibold hover:bg-stone-100" data-cart-action="decrease" aria-label="${escapeHtml(dish.name)} entfernen">−</button><span class="min-w-5 text-center text-sm font-semibold" data-cart-quantity>0</span><button type="button" class="grid h-7 w-7 place-items-center rounded-full bg-[#292b24] text-lg font-semibold text-white hover:bg-[#44463e]" data-cart-action="increase" aria-label="${escapeHtml(dish.name)} hinzufügen">+</button></div></div></div><p class="mt-2 line-clamp-2 text-xs leading-5 text-stone-600">${escapeHtml(dish.description)}</p></div></article>`;
       }).join('');
       refreshMenuQuantities();
     }
     const cartStorageKey = 'site-refresh-cart';
-    let cart = JSON.parse(localStorage.getItem(cartStorageKey) || '[]');
+    let cart;
+    try { cart = JSON.parse(localStorage.getItem(cartStorageKey) || '[]'); }
+    catch { cart = []; }
+    if (Array.isArray(cart)) {
+      cart = cart.filter(row => row && typeof row === 'object').map(row => {
+        if (row.productId) return row;
+        const dish = dishes.find(item => item.name === row.name);
+        if (!dish) return row;
+        const prices = (dish.price.match(/\d+,\d{2}/g) || []).map(value => Number(value.replace(',', '.')));
+        const option = prices.indexOf(Number(row.unitPrice));
+        if (option < 0) return row;
+        const productId = prices.length > 1 ? `${dish.id}-${option + 1}` : dish.id;
+        return { ...row, key: productId, productId };
+      });
+    } else cart = [];
+    localStorage.setItem(cartStorageKey, JSON.stringify(cart));
     function saveCart() {
       localStorage.setItem(cartStorageKey, JSON.stringify(cart));
       refreshMenuQuantities();
       refreshCartLink();
     }
-    function selectedCartKey(dish, price) { return `${dish.name}::${Number(price).toFixed(2)}`; }
+    function selectedProductId(dish, selector) { return selector ? selector.selectedOptions[0].dataset.productId : dish.id; }
+    function selectedCartKey(productId) { return productId; }
     function refreshMenuQuantities() {
       grid.querySelectorAll('[data-menu-index]').forEach(card => {
         const dish = dishes[Number(card.dataset.menuIndex)];
         const selector = card.querySelector('[data-price-choice]');
         const price = selector ? Number(selector.value) : Number((dish.price.match(/\d+,\d{2}/) || ['0'])[0].replace(',', '.'));
-        const item = cart.find(row => row.key === selectedCartKey(dish, price));
+        const item = cart.find(row => row.key === selectedCartKey(selectedProductId(dish, selector)));
         card.querySelector('[data-cart-quantity]').textContent = item ? item.quantity : '0';
       });
     }
     function refreshCartLink() {
       const link = document.getElementById('cart-link');
+      const requestedTable = new URLSearchParams(location.search).get('table');
+      const validTable = requestedTable && /^[1-9]$|^1[0-9]$|^20$/.test(requestedTable) ? requestedTable : '';
+      link.href = `checkout.html${validTable ? `?table=${validTable}` : ''}`;
       const count = cart.reduce((sum, item) => sum + item.quantity, 0);
       link.classList.toggle('hidden', count === 0);
       link.querySelector('[data-cart-count]').textContent = `${count} ${count === 1 ? 'Artikel' : 'Artikel'}`;
@@ -100,11 +119,16 @@
       const dish = dishes[Number(card.dataset.menuIndex)];
       const selector = card.querySelector('[data-price-choice]');
       const price = selector ? Number(selector.value) : Number((dish.price.match(/\d+,\d{2}/) || ['0'])[0].replace(',', '.'));
-      const key = selectedCartKey(dish, price);
+      const productId = selectedProductId(dish, selector);
+      const key = selectedCartKey(productId);
       const item = cart.find(row => row.key === key);
       if (action.dataset.cartAction === 'increase') {
+        if (item && item.quantity >= 20) {
+          window.alert('Pro Artikel sind höchstens 20 Portionen möglich.');
+          return;
+        }
         if (item) item.quantity += 1;
-        else cart.push({ key, name: dish.name, unitPrice: price, quantity: 1, image: menuPhoto(dish) });
+        else cart.push({ key, productId, name: `${dish.name}${selector ? ` · ${selector.selectedOptions[0].textContent.split(' · ')[0]}` : ''}`, unitPrice: price, quantity: 1, image: menuPhoto(dish) });
       } else if (item) {
         item.quantity -= 1;
         if (!item.quantity) cart = cart.filter(row => row.key !== key);
@@ -117,6 +141,15 @@
       tab.setAttribute('aria-selected', 'true'); renderMenu(tab.dataset.category);
     }));
     renderMenu('all-food');
+    const tableParam = new URLSearchParams(location.search).get('table');
+    const tableContext = document.getElementById('table-context');
+    if (tableContext && tableParam) {
+      const validTable = /^[1-9]$|^1[0-9]$|^20$/.test(tableParam);
+      tableContext.classList.remove('hidden');
+      tableContext.textContent = validTable
+        ? `QR-Code erkannt · Tisch ${tableParam} ist für Ihre Bestellung vorausgewählt.`
+        : 'Diese Tischnummer ist ungültig. Bitte wählen Sie einen Tisch auf der Bestellseite.';
+    }
 
     // Mobile navigation toggle and close-on-navigation.
     const mobileButton = document.getElementById('mobile-menu-button');

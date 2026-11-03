@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#faf8f3" />
+  <title>Verwaltung — Site Refresh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family:'DM Sans',sans-serif; background:#faf8f3; color:#242720; }
+    h1,h2,h3,.serif { font-family:'Playfair Display',serif; }
+    button:focus-visible,input:focus-visible,select:focus-visible { outline:3px solid rgba(189,118,45,.55); outline-offset:3px; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="border-b border-black/5 bg-white/80">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
+      <div class="flex items-center gap-5"><a href="../index.html" class="flex items-center gap-3"><img src="../assets/site-refresh-logo-scharf.png" alt="" class="h-11 w-14 object-contain" /><span><span class="block serif text-lg">Site Refresh</span><span class="block text-[9px] uppercase tracking-[.19em] text-stone-500">Verwaltung</span></span></a><a href="tische.html" class="text-sm font-semibold text-[#8f5825] hover:underline">Tischübersicht</a></div>
+      <button id="logout" type="button" class="hidden rounded-full border border-stone-300 px-4 py-2 text-sm font-semibold">Abmelden</button>
+    </div>
+  </header>
+  <main class="mx-auto max-w-7xl px-5 py-10 md:py-14">
+    <section id="login-panel" class="mx-auto max-w-md rounded-2xl border border-stone-200 bg-white p-6 sm:p-8">
+      <p class="text-xs font-bold uppercase tracking-[.22em] text-[#bd762d]">Administratorzugang</p>
+      <h1 class="mt-3 text-4xl">Verwaltung</h1>
+      <p class="mt-3 text-sm leading-6 text-stone-600">Melden Sie sich mit dem Administrator-Konto Ihres Supabase-Projekts an.</p>
+      <p id="supabase-setup" class="mt-3 hidden rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900" role="status"></p>
+      <form id="login-form" class="mt-6 grid gap-4">
+        <label class="text-xs font-semibold">E-Mail-Adresse<input name="email" type="email" autocomplete="username" required class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-3 text-sm font-normal" /></label>
+        <label class="text-xs font-semibold">Passwort<input name="password" type="password" autocomplete="current-password" required class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-3 text-sm font-normal" /></label>
+        <button class="rounded-full bg-[#292b24] px-5 py-3 text-sm font-semibold text-white">Anmelden</button>
+      </form>
+      <p id="login-error" class="mt-4 hidden text-sm text-red-700" role="alert"></p>
+    </section>
+    <section id="dashboard" class="hidden">
+      <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <div><p class="text-xs font-bold uppercase tracking-[.22em] text-[#bd762d]">Übersicht</p><h1 class="mt-3 text-4xl sm:text-5xl">Verwaltung &amp; Summe</h1></div>
+        <button id="refresh" type="button" class="rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-semibold hover:border-[#bd762d]">Aktualisieren</button>
+      </div>
+      <p class="mt-5 rounded-xl bg-emerald-50 px-4 py-3 text-xs leading-5 text-emerald-900">Bestellungen und Finanzdaten werden aus der gemeinsamen Supabase-Datenbank geladen.</p>
+      <p id="dashboard-error" class="mt-5 hidden rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800" role="alert"></p>
+      <div id="financial-summary" class="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"></div>
+      <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Bestellzeitraum">
+        <button id="show-all-orders" type="button" aria-pressed="true" class="rounded-full bg-[#292b24] px-5 py-3 text-sm font-semibold text-white">Alle Bestellungen</button>
+        <button id="show-today-orders" type="button" aria-pressed="false" class="rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-semibold hover:border-[#bd762d]">Bestellungen heute</button>
+      </div>
+      <section class="mt-9 rounded-2xl border border-stone-200 bg-white p-5 sm:p-7">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div><p class="text-xs font-bold uppercase tracking-[.2em] text-[#bd762d]">Tischübersicht</p><h2 class="mt-2 serif text-2xl">Umsatz je Tisch</h2></div>
+          <label class="text-xs font-semibold">Bestellungen für Tisch anzeigen
+            <select id="table-filter" class="mt-2 block min-w-48 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm font-normal"><option value="all">Alle Tische</option></select>
+          </label>
+        </div>
+        <div id="table-overview" class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-5"></div>
+      </section>
+      <section class="mt-9">
+        <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p class="text-xs font-bold uppercase tracking-[.2em] text-[#bd762d]">Bestellhistorie</p><h2 class="mt-2 serif text-3xl">Alle Bestellungen</h2></div><p id="order-count" class="text-sm text-stone-600"></p></div>
+        <div id="admin-orders" class="mt-5 grid gap-4 lg:grid-cols-2"></div>
+        <p id="no-orders" class="hidden rounded-2xl border border-dashed border-stone-300 bg-white p-10 text-center text-stone-500">Noch keine Bestellungen vorhanden.</p>
+      </section>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="../ordering.js"></script>
+  <script src="admin.js" defer></script>
+</body>
+</html>

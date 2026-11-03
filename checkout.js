@@ -7,6 +7,7 @@
   const receipt = document.getElementById('receipt-print');
   const receiptItems = document.getElementById('receipt-items');
   const receiptTotal = document.getElementById('receipt-total');
+  const placeOrderLink = document.getElementById('checkout-bestellen');
   const nameInput = document.getElementById('receipt-customer-name');
   const phoneInput = document.getElementById('receipt-customer-phone');
   const euro = amount => Number(amount).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
@@ -15,17 +16,29 @@
   })[character]);
   let cart;
   let receiptShown = false;
-  try { cart = JSON.parse(localStorage.getItem(storageKey) || '[]'); }
+  try {
+    const stored = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    cart = Array.isArray(stored) ? stored : [];
+  }
   catch { cart = []; }
+
+  const requestedTable = new URLSearchParams(location.search).get('table');
+  const validTable = requestedTable && (/^[1-9]$|^1[0-9]$|^20$/).test(requestedTable);
+  if (validTable) placeOrderLink.href = `tisch.html?table=${requestedTable}`;
 
   function save() { localStorage.setItem(storageKey, JSON.stringify(cart)); render(); }
   function render() {
-    cart = cart.filter(item => Number.isFinite(item.unitPrice) && item.quantity > 0);
+    cart = cart.filter(item => item && Number.isFinite(item.unitPrice) && Number.isInteger(item.quantity) && item.quantity > 0);
     const isEmpty = cart.length === 0;
     list.classList.toggle('hidden', isEmpty);
     emptyCart.classList.toggle('hidden', !isEmpty);
     summary.classList.toggle('hidden', isEmpty);
     receipt.classList.toggle('hidden', isEmpty || !receiptShown);
+    const hasProductIds = cart.every(item => typeof item.productId === 'string' && item.productId.length > 0);
+    placeOrderLink.classList.toggle('pointer-events-none', !hasProductIds);
+    placeOrderLink.classList.toggle('opacity-50', !hasProductIds);
+    placeOrderLink.setAttribute('aria-disabled', String(!hasProductIds));
+    if (!hasProductIds) placeOrderLink.href = 'index.html#menu';
     list.innerHTML = cart.map((item, index) => `
       <article class="flex items-center gap-4 p-4 sm:gap-5 sm:p-5">
         <img src="${escapeHtml(item.image)}" alt="" class="h-20 w-20 shrink-0 rounded-xl object-cover sm:h-24 sm:w-24" />
@@ -54,7 +67,13 @@
     if (!button) return;
     const item = cart[Number(button.dataset.index)];
     if (!item) return;
-    if (button.dataset.action === 'increase') item.quantity += 1;
+    if (button.dataset.action === 'increase') {
+      if (item.quantity >= 20) {
+        window.alert('Pro Artikel sind höchstens 20 Portionen möglich.');
+        return;
+      }
+      item.quantity += 1;
+    }
     else item.quantity -= 1;
     if (item.quantity <= 0) cart = cart.filter(row => row !== item);
     save();
@@ -66,6 +85,12 @@
     receipt.scrollIntoView({ behavior: 'smooth', block: 'start' });
     document.getElementById('receipt-customer-name').focus({ preventScroll: true });
   });
+  placeOrderLink.addEventListener('click', event => {
+    if (placeOrderLink.getAttribute('aria-disabled') === 'true') {
+      event.preventDefault();
+      window.alert('Bitte fügen Sie die Gerichte über die aktuelle Speisekarte erneut hinzu.');
+    }
+  });
   nameInput.addEventListener('input', render);
   phoneInput.addEventListener('input', render);
   document.getElementById('receipt-form-fields').addEventListener('submit', event => event.preventDefault());
@@ -73,7 +98,10 @@
 
   window.addEventListener('storage', event => {
     if (event.key === storageKey) {
-      try { cart = JSON.parse(event.newValue || '[]'); } catch { cart = []; }
+      try {
+        const stored = JSON.parse(event.newValue || '[]');
+        cart = Array.isArray(stored) ? stored : [];
+      } catch { cart = []; }
       render();
     }
   });
